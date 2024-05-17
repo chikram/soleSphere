@@ -5,8 +5,14 @@ import ProductDetail from "./screens/ProductDetail";
 import ShoppingCart from "./screens/ShoppingCart";
 import { FontAwesome } from "@expo/vector-icons";
 import { Pressable, Text } from "react-native";
+import { useSelector } from "react-redux";
+import { selectNumberOfItems } from "./Store/cartSlice";
+
 const Stack = createNativeStackNavigator();
+
 const Navigation = () => {
+  const numberOfItems = useSelector(selectNumberOfItems);
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -35,7 +41,7 @@ const Navigation = () => {
                     lineHeight: 13,
                   }}
                 >
-                  4
+                  {numberOfItems}
                 </Text>
 
                 <FontAwesome
